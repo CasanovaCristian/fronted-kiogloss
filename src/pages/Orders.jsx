@@ -19,7 +19,7 @@ export default function Orders() {
   const fetchOrders = async () => {
     setLoading(true)
     try {
-      const token = localStorage.getItem('access') || localStorage.getItem('accessToken')
+      const token = JSON.parse(localStorage.getItem('access')) || localStorage.getItem('accessToken')
       if (!token) {
         setOrders([])
         setLoading(false)

@@ -54,24 +54,27 @@ const Header = () => {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <Link to="/wishlist" className="text-center text-[#610361] hover:text-white transition relative font-swash">
+                        <Link to={!(localStorage.getItem('access') || localStorage.getItem('accessToken')) ? "/login" : "/wishlist"} className="text-center text-[#610361] hover:text-white transition relative font-swash">
                             <div className="text-2xl">
                                 <i className="fa-regular fa-heart"></i>
                             </div>
                             <div className="text-xs leading-3">Lista de Deseados</div>
                         </Link>
-                        <Link to="/cart" className="text-center text-[#610361] hover:text-white transition relative font-swash">
+                        <Link to={!(localStorage.getItem('access') || localStorage.getItem('accessToken')) ? "/login" : "/cart"} className="text-center text-[#610361] hover:text-white transition relative font-swash">
                             <div className="text-2xl">
                                 <i className="fa-solid fa-bag-shopping"></i>
                             </div>
                             <div className="text-xs leading-3">Carrito</div>
                         </Link>
-                        <Link to="/account" className="text-center text-[#610361] hover:text-white transition relative font-swash">
-                            <div className="text-2xl">
-                                <i className="fa-regular fa-user"></i>
-                            </div>
-                            <div className="text-xs leading-3">Cuenta</div>
-                        </Link>
+                        {
+                            !(localStorage.getItem('access') || localStorage.getItem('accessToken')) ? null :
+                            <Link to="/account" className="text-center text-[#610361] hover:text-white transition relative font-swash">
+                                <div className="text-2xl">
+                                    <i className="fa-regular fa-user"></i>
+                                </div>
+                                <div className="text-xs leading-3">Cuenta</div>
+                            </Link>
+                        }
                     </div>
                 </div>
             </header>
