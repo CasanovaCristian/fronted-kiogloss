@@ -2,12 +2,15 @@ import api from './api';
 
 const productService = {
     // Obtener todos los productos con paginación
-    getAllProducts: async (page = 0, size = 12, sort = 'id,asc') => {
+    getAllProducts: async ({ page, page_size, tags, search, sort}) => {
         try {
             const response = await api.get('/products', {
                 params: { 
                     page, 
-                    page_size: size  // El backend usa 'page_size' no 'size'
+                    page_size,
+                    tags,
+                    search,
+                    sort
                 }
             });
             return response.data;
